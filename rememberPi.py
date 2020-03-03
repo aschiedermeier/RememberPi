@@ -24,33 +24,55 @@ while len(num) < 6:
     r=random.randint(0,9)
     if r not in num: 
         num.append(r)
-print(num)
+#print(num)
+
+num = str(0)
+#################
+lokiDict = {0:["l"], 1:["t","d"],2:["n"],3:["m"],4:["r"],5:["s","z"], 6:["b","p"],7:["f","v"],8:["k","c","q"],9:["g","j","sh","ch"]}
+print ("#"*20)
+print ("The loki basic dictionary:")
+for number,loki in lokiDict.items():
+    print ("Number " + str(number) + " can be replaced by:" )
+    for l in loki:
+        print (l)
+    print()
 
 #####################
 # dictionary with number-name pairs
-lokiDict = {0:"Lee", 1:"Tea",2:"Neo",3:"Ma",4:"Rio",5:"Sea",6:"Bee",7:"Fee",8:"Key",9:"Goo"}
-#print(lokiDict)
-for number,loki in lokiDict.items():
-    print (loki + " stands for " + str(number))
+loki99 = {"0":["Lee"], "1":["Tea"],"2":["Neo"],"3":["Ma"],"4":["Rio"],"5":["Sea"],"6":["Bee"],"7":["Fee"],"8":["Key"],"9":["Goo"]}
+print ("#"*20)
+print ("The lokis from 0 to 9:")
+for number,loki in loki99.items():
+    print (loki[0]+" stands for " + str(number))
+print()
 
 ###################
 # transform number into loki code
+num = "012345"
+print ("#"*20)
+print ("Your number is:")
+for n in num:
+    print (n,end=" ")
+print()
+
 print ("\nYour number in Loki code:")
-lokiNum = [lokiDict[x] for x in num]
-for x in lokiNum:
-    print (x, end = " ")
+for n in num:
+    print(loki99[n][0],end=" ")
+
 print()
 
 ##################
 # option to replace with other loki name
+print()
+print ("#"*20)
+print("Replace lokis:")
+#replace = input ("Which number to replace:")
+replace = "0"
 
-#replace = int(input ("Which number to replace:"))
-replace = 1
-
-currentLoki = lokiDict[replace]
+currentLoki = loki99[replace][0]
 print("Current Loki is %s" %currentLoki)
 #newLoki = input("Which new Loki for %s?:" %replace)
-newLoki = "tit"
+newLoki = "Leo"
 
 print("You want to replace %s with %s for %s"%(currentLoki,newLoki,replace))
 
@@ -58,9 +80,15 @@ print("You want to replace %s with %s for %s"%(currentLoki,newLoki,replace))
 
 # test, if the newLoki can replace the number
 from transformLoki import transform_loki
-print (transform_loki(newLoki))
 
 if transform_loki(newLoki) == replace:
-    print: ("yes")
+    print ("New Loki can replace old one")
+    print ("Loki of %s is %s and can replace %s for %s"%(newLoki,transform_loki(newLoki),currentLoki,replace))
+    
 else:
-    print:("no")
+    print ("Sorry, try again")
+    print ("Loki of %s is %s and cannot replace %s for %s"%(newLoki,transform_loki(newLoki),currentLoki,replace))
+
+
+########
+# update loki99 dictionary

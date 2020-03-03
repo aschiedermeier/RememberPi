@@ -36,7 +36,7 @@ def transform_loki(loki):
     for conso,number in consoNumbers.items():
         lokiNumber = lokiNumber.replace(conso,number)
     #print (lokiNumber)  
-    
+
     #print (("%s becomes %s") %(loki,lokiNumber))
     #print()
 
@@ -63,10 +63,4 @@ for l in lokiList:
 
 
 
-#################
-# function to transform a Loki into a number
-# needed, if a new Loki follows the rules
-
-#lokiDict = {0:["l"], 1:["t","d"],2:["n"],3:["m"],4:["r"]}
-#print (lokiDict)
 
