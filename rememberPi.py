@@ -41,10 +41,23 @@ for number,loki in lokiDict.items():
 # dictionary with number-name pairs
 loki99 = {"0":["Lee"], "1":["Tea"],"2":["Neo"],"3":["Ma"],"4":["Rio"],"5":["Sea"],"6":["Bee"],"7":["Fee"],"8":["Key"],"9":["Goo"]}
 print ("#"*20)
-print ("The lokis from 0 to 9:")
-for number,loki in loki99.items():
-    print (loki[0]+" stands for " + str(number))
-print()
+
+#####################
+# show dictionary
+def show_dictionary(dict):
+    '''show dictionary nicely.'''
+    print ("\nThe lokis from 0 to 9:")
+    for number,loki in dict.items():
+        print (loki[0]+" stands for " + str(number))
+    print()
+
+show_dictionary(loki99)
+
+#########################
+# update dictionary with additional loki
+def update_dictionary(dict,num,lok):
+    '''insert new loki on first place.'''
+    dict[num].insert(0,lok)
 
 ###################
 # transform number into loki code
@@ -66,28 +79,30 @@ print()
 print()
 print ("#"*20)
 print("Replace lokis:")
-#replace = input ("Which number to replace:")
-replace = "0"
+replace = input ("Which number to replace:")
+#replace = "0"
 
 currentLoki = loki99[replace][0]
 print("Current Loki is %s" %currentLoki)
-#newLoki = input("Which new Loki for %s?:" %replace)
-newLoki = "Leo"
+newLoki = input("Which new Loki for %s?:" %replace)
+#newLoki = "Leo"
 
-print("You want to replace %s with %s for %s"%(currentLoki,newLoki,replace))
-
+print("You want to replace %s with %s for %s:"%(currentLoki,newLoki,replace))
+print()
 ##################
 
 # test, if the newLoki can replace the number
 from transformLoki import transform_loki
 
 if transform_loki(newLoki) == replace:
-    print ("New Loki can replace old one")
-    print ("Loki of %s is %s and can replace %s for %s"%(newLoki,transform_loki(newLoki),currentLoki,replace))
-    
+    print ("New Loki can replace old one!")
+    print ("Loki of %s is %s and can replace %s for %s."%(newLoki,transform_loki(newLoki),currentLoki,replace))
+    update_dictionary(loki99,replace,newLoki)
+    show_dictionary(loki99)
+
 else:
-    print ("Sorry, try again")
-    print ("Loki of %s is %s and cannot replace %s for %s"%(newLoki,transform_loki(newLoki),currentLoki,replace))
+    print ("Sorry, try again!")
+    print ("Loki of %s is %s and cannot replace %s for %s."%(newLoki,transform_loki(newLoki),currentLoki,replace))
 
 
 ########
