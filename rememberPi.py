@@ -28,7 +28,7 @@ print(num)
 
 #####################
 # dictionary with number-name pairs
-lokiDict = {0:"Lee", 1:"Tea",2:"Neo",3:"Mom",4:"Rio",5:"Sea",6:"Bee",7:"Fee",8:"Key",9:"Goo"}
+lokiDict = {0:"Lee", 1:"Tea",2:"Neo",3:"Ma",4:"Rio",5:"Sea",6:"Bee",7:"Fee",8:"Key",9:"Goo"}
 #print(lokiDict)
 for number,loki in lokiDict.items():
     print (loki + " stands for " + str(number))
@@ -43,10 +43,24 @@ print()
 
 ##################
 # option to replace with other loki name
-replace = input ("Which number to replace:")
-newLoki = input("Which new Loki for %s?:" %replace)
-print (newLoki)
 
+#replace = int(input ("Which number to replace:"))
+replace = 1
+
+currentLoki = lokiDict[replace]
+print("Current Loki is %s" %currentLoki)
+#newLoki = input("Which new Loki for %s?:" %replace)
+newLoki = "tit"
+
+print("You want to replace %s with %s for %s"%(currentLoki,newLoki,replace))
 
 ##################
+
 # test, if the newLoki can replace the number
+from transformLoki import transform_loki
+print (transform_loki(newLoki))
+
+if transform_loki(newLoki) == replace:
+    print: ("yes")
+else:
+    print:("no")
