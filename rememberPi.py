@@ -8,6 +8,7 @@
 
 print()
 import random
+import json
 
 #########
 # input number, cut spaces and transform into list
@@ -43,6 +44,24 @@ loki99 = {"0":["Lee"], "1":["Tea"],"2":["Neo"],"3":["Ma"],"4":["Rio"],"5":["Sea"
 print ("#"*20)
 
 #####################
+# loading loki9 from json file
+# if i am using the program the first time, i won't find the file, as it will be saved at the end of each round
+print()
+print ("#"*70)
+print ("Loading loki99 list...")
+
+filename = 'loki.json'
+try:
+    with open(filename) as f_obj:
+        loki99 = json.load(f_obj)
+except FileNotFoundError:
+    msg = "Can't find {0}.".format(filename)
+    print(msg)
+else:
+    print ("Loaded loki99 list")
+    print(loki99)
+
+#####################
 # show dictionary
 def show_dictionary(dict):
     '''show dictionary nicely.'''
@@ -57,7 +76,10 @@ show_dictionary(loki99)
 # update dictionary with additional loki
 def update_dictionary(dict,num,lok):
     '''insert new loki on first place.'''
-    dict[num].insert(0,lok)
+    # in case it's already in delete it, but in any case new loki takes first place
+    if lok in dict[num]:
+        dict[num].remove(lok)
+    dict[num].insert(0,lok.title())
 
 ###################
 # transform number into loki code
@@ -80,11 +102,17 @@ print()
 print ("#"*20)
 print("Replace lokis:")
 replace = input ("Which number to replace:")
+# input needs to be number
+# shortcut
 #replace = "0"
 
 currentLoki = loki99[replace][0]
-print("Current Loki is %s" %currentLoki)
+print("Current Loki for %s is %s" %(replace,currentLoki))
+
 newLoki = input("Which new Loki for %s?:" %replace)
+
+# input needs to be letters, otherwise i can just input the number
+# shortcut
 #newLoki = "Leo"
 
 print("You want to replace %s with %s for %s:"%(currentLoki,newLoki,replace))
@@ -104,6 +132,19 @@ else:
     print ("Sorry, try again!")
     print ("Loki of %s is %s and cannot replace %s for %s."%(newLoki,transform_loki(newLoki),currentLoki,replace))
 
+list1 = [1,2]
+name = list1
+print (loki99)
 
-########
-# update loki99 dictionary
+# saving downloaded_counter into json file
+print ("Saving loki99 list")
+filename = 'loki.json'
+with open(filename,'w') as f_obj:
+    json.dump(loki99, f_obj)
+
+
+# name = input("Whats your name?")
+
+# filename = 'username.json'
+# with open(filename,'w') as f_obj:
+#     json.dump(name, f_obj)
